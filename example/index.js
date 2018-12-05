@@ -1,8 +1,6 @@
-/* globals Worker, WorkeritPubSub */
+/* globals Worker, WorkerWrapper */
 
-let worker = new Worker('worker.js')
-
-const workerPubSub = new WorkeritPubSub(worker)
+const workerPubSub = new WorkerWrapper(new Worker('worker.js'))
 
 /*
  * Get all public messages sent
@@ -16,6 +14,10 @@ workerPubSub.addEventListener('message', (evt) => {
  */
 workerPubSub.addEventListener('message:progress', (evt) => {
   console.log('Main:  message:progress')
+})
+
+workerPubSub.addEventListener('messageerror', function (e) {
+  console.log('Main: message:error - ' + e.data.payload)
 })
 
 workerPubSub.postMessage(1)
