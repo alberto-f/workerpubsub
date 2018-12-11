@@ -1,3 +1,4 @@
+[![HitCount](http://hits.dwyl.io/alberto-f/workerpubsub.svg)](http://hits.dwyl.io/alberto-f/workerpubsub)
 # WorkerPubSub
 
 Main and Web Worker thread communication through a pubsub implementation.
